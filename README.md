@@ -1,6 +1,8 @@
 # [Amaze UI](http://amazeui.org/)
 ![Amaze UI Logo](http://amazeui.org/i/ui/ui-logo.svg)
 
+# 历史遗留版本，仅供内部使用！
+
 Amaze UI 是基于社区开源项目构建的一个跨屏前端框架。
 
 ## 功能简介
