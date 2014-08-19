@@ -1,5 +1,5 @@
 /*!
- * Amaze UI 1.0.0 alpha
+ * Amaze UI 0.9.0
  *
  * @author: Amaze UI Team
  * @copyright:   AllMobilize Inc.
@@ -9536,6 +9536,14 @@ tbody.am-collapse.am-in {
 }
 .am-map-default #BMap_mask {
   width: 100%;
+}
+.am-mechat {
+  margin: 1rem;
+}
+.am-mechat .section-cbox-wap .cbox-post-wap .post-action-wap .action-function-wap .function-list-wap .list-upload-wap .upload-mutual-wap {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
 }
 .am-menu {
   padding: 0;
