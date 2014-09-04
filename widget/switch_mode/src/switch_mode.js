@@ -1,6 +1,6 @@
 define(function(require, exports, module) {
    
-    var mask = require('zepto.mask.js');
+    /*var mask = require('zepto.mask.js');
 
     var $ = window.Zepto;
 
@@ -20,6 +20,6 @@ define(function(require, exports, module) {
         if($('.am-mask').css("display") == "block") {
             $(this).amMask.hide($('.am-switch-mode-m'));
         }
-    }); 
+    }); */
 
 });
