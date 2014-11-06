@@ -24,6 +24,9 @@ node_modules/
 /dist/demo/*
 /dist/docs/*
 /app/public/*
-#/dist/amui*
-#/dist/assets/
+/dist/css
+/dist/js
 .build
+
+less/amazeui.widgets.less
+js/amazeui.js

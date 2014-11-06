@@ -6,7 +6,6 @@ var format = require('util').format;
 var gulp = require('gulp');
 var gutil = require('gulp-util');
 var less = require('gulp-less');
-var changed = require('gulp-changed');
 var watch = require('gulp-watch');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
@@ -90,7 +89,8 @@ gulp.task('buildLess', function() {
         .pipe(less({
             paths: [path.join(__dirname, 'less'), path.join(__dirname, 'widget/*/src')]
         }))
-        .pipe(gulp.dest('./dist/assets/css'))
+        .pipe(rename('amazeui.css'))
+        .pipe(gulp.dest('./dist/css'))
         // Disable advanced optimizations - selector & property merging, reduction, etc.
         // for Issue #19 https://github.com/allmobilize/amazeui/issues/19
         .pipe(minifyCSS({noAdvanced: true}))
@@ -98,7 +98,7 @@ gulp.task('buildLess', function() {
             suffix: '.min',
             extname: ".css"
         }))
-        .pipe(gulp.dest('./dist/assets/css'));
+        .pipe(gulp.dest('./dist/css'));
 });
 
 
@@ -123,7 +123,7 @@ gulp.task('copyWidgetJs', function() {
 // copy widgets js files to build dir
 
 gulp.task('copyUIJs', ['copyWidgetJs'], function() {
-    return gulp.src(['*.js', '!./js/zepto.calendar.js'], {
+    return gulp.src(['*.js', '!amazeui.js', '!./js/zepto.calendar.js'], {
         cwd: './js'
     })
         .pipe(gulp.dest(buildTmpDir));
@@ -151,9 +151,9 @@ gulp.task('concat', ['transport'], function() {
 
     //[seajs, '*.js', seaUse]
     return gulp.src([seajs, 'core.js', '*!(core)*.js', seaUse], {cwd: transportDir})
-        .pipe(concat('amui.js'))
+        .pipe(concat('amazeui.js'))
         .pipe(header(banner, {pkg: pkg}))
-        .pipe(gulp.dest('./dist/assets/js'))
+        .pipe(gulp.dest('./dist/js'))
         .pipe(uglify({
             mangle: {
                 except: ['require']
@@ -164,7 +164,7 @@ gulp.task('concat', ['transport'], function() {
             suffix: '.min',
             extname: ".js"
         }))
-        .pipe(gulp.dest('./dist/assets/js'))
+        .pipe(gulp.dest('./dist/js'))
 });
 
 
@@ -178,7 +178,7 @@ gulp.task('clean', ['concat'], function() {
 gulp.task('hbsHelper', function() {
     gulp.src(jsPaths.hbsHelper)
         .pipe(concat('amui.widget.helper.js'))
-        .pipe(gulp.dest('./dist/assets/js'))
+        .pipe(gulp.dest('./dist/js'))
         .pipe(uglify({
             mangle: {
                 except: ['require']
@@ -189,7 +189,7 @@ gulp.task('hbsHelper', function() {
             suffix: '.min',
             extname: ".js"
         }))
-        .pipe(gulp.dest('./dist/assets/js'))
+        .pipe(gulp.dest('./dist/js'))
 });
 
 gulp.task('widgetsFile', getWidgetFiles);
